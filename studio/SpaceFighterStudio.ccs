@@ -1,0 +1,19 @@
+<Solution>
+  <PropertyGroup Name="SpaceFighterStudio" Version="2.2.9.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="Images">
+          <Image Name="glassPanel_cornerTR.png" />
+          <Image Name="metalPanel.png" />
+        </Folder>
+        <Folder Name="Scenes">
+          <Project Name="MainScene.csd" Type="Scene" />
+        </Folder>
+        <Folder Name="Font">
+          <TTF Name="kenvector_future.ttf" />
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
