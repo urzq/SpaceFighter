@@ -36,6 +36,12 @@
     <ClCompile Include="..\Classes\Game\World.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\Background.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ParallaxElement.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -54,6 +60,12 @@
       <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\World.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Background.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\ParallaxElement.h">
       <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
