@@ -14,6 +14,7 @@ public:
 	~Player();
 	
 	void Update(float dT);
+	float getNormalizedPosX() const;
 
 private:
 	Sprite* _Sprite;

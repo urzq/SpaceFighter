@@ -1,4 +1,4 @@
-# Compiled Object files
+	# Compiled Object files
 *.slo
 *.lo
 *.o
@@ -32,3 +32,6 @@
 *.idb
 *.sdf
 *.exp
+*.opensdf
+
+/src/proj.win32/Debug.win32/

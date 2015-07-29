@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Player.h"
+#include "Background.h"
 
 USING_NS_CC;
 
@@ -16,6 +17,9 @@ public:
 
 private:
 	Player* _Player;
+	Background* _Background;
+
+	static const float _SCROLL_SPEED;
 };
 
 #endif
