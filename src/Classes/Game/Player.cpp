@@ -50,11 +50,18 @@ void Player::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 
 void Player::Update(float dT)
 {
+	// Moves the ship
 	auto pos = this->getPosition();
 	auto dir = _Destination - pos;
 	auto len = dir.length();
 	dir.normalize();
 	auto offset = std::min(len, dT * SHIP_SPEED);
 
-	this->setPosition( pos + dir * offset);
+	pos = pos + dir * offset;
+
+	// And constraint its position without the world
+	auto halfShip = _Sprite->getContentSize() / 2;
+	pos = pos.getClampPoint( halfShip, Director::getInstance()->getWinSize()-halfShip);
+
+	this->setPosition(pos);
 }
