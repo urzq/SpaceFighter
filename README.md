@@ -13,6 +13,6 @@ on delivering a polished game.
 [Sky Force](https://itunes.apple.com/fr/app/sky-force-2014/id717233547?mt=8)
 
 
-##ScreenShot
+## Screenshot
 
-![alt tag](https://raw.github.com/urzq/SpaceFighter/master/screenshot.png
+![](https://raw.github.com/urzq/SpaceFighter/master/screenshot.png)
