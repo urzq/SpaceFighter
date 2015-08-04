@@ -25,21 +25,14 @@ Background::~Background()
 {
 }
 
-const float Background::getLeftBound() const 
+const float Background::GetParallaxWidth() const
 {
-	auto winSize = Director::getInstance()->getWinSize();
-	return _TopSprite->getContentSize().width/2;
+	return _TopSprite->getContentSize().width;
 }
 
-const float Background::getRightBound() const
+void Background::Update(const float dT, const float scrollSpeed, const Vec2& playerPos)
 {
-	auto winSize = Director::getInstance()->getWinSize();
-	return winSize.width - _TopSprite->getContentSize().width/2;
-}
-
-void Background::Update(const float dT, const float scrollSpeed, const float normalizedPosX)
-{
-	ParallaxElement::Update(normalizedPosX);
+	ParallaxElement::Update(playerPos);
 
 	auto yOffset = -dT * scrollSpeed;
 	_TopSprite->setPosition(0, _TopSprite->getPosition().y + yOffset);

@@ -16,10 +16,9 @@ public:
 	~EnemyManager();
 	
 	// param scrollSpeed: pixel/sec
-	void EnemyManager::Update(const float dT, const float scrollSpeed, const float normalizedPosX, const Vec2& playerPos);
+	void EnemyManager::Update(const float dT, const float scrollSpeed, const Vec2& playerPos);
 
-	virtual const float getLeftBound() const override;
-	virtual const float getRightBound() const override;
+	virtual const float GetParallaxWidth() const override;
 
 	BaseEnemy* CreateEnemy( const std::string& ennemyType, const Vec2& startPos);
 

@@ -24,6 +24,6 @@ World::~World()
 void World::Update(float dT)
 {
 	_Player->Update(dT);
-	_Background->Update(dT, _SCROLL_SPEED, _Player->getNormalizedPosX() );
-	_EnemyManager->Update(dT, _SCROLL_SPEED, _Player->getNormalizedPosX(), _Player->getPosition() );
+	_Background->Update(dT, _SCROLL_SPEED, _Player->getPosition() );
+	_EnemyManager->Update(dT, _SCROLL_SPEED, _Player->getPosition());
 }

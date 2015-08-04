@@ -25,12 +25,6 @@ Player::~Player()
 {
 	this->removeAllChildren();
 }
-
-float Player::getNormalizedPosX() const
-{
-	auto winSize = Director::getInstance()->getWinSize();
-	return getPosition().x / winSize.width;
-}
 		
 bool Player::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 {

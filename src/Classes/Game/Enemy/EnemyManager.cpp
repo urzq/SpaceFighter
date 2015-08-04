@@ -20,18 +20,9 @@ EnemyManager::~EnemyManager()
 {
 }
 
-const float EnemyManager::getLeftBound() const 
+const float EnemyManager::GetParallaxWidth() const
 {
-	//return 400;
-	return 360;
-}
-
-const float EnemyManager::getRightBound() const
-{
-	//auto winSize = Director::getInstance()->getWinSize();
-	//return winSize.width - _TopSprite->getContentSize().width/2;
-	//return 240;
-	return 280;
+	return Director::getInstance()->getWinSize().width * 1.2;
 }
 
 BaseEnemy* EnemyManager::CreateEnemy( const std::string& ennemyType, const Vec2& startPos)
@@ -50,9 +41,9 @@ BaseEnemy* EnemyManager::CreateEnemy( const std::string& ennemyType, const Vec2&
 	return enemy;
 }
 
-void EnemyManager::Update(const float dT, const float scrollSpeed, const float normalizedPosX, const Vec2& playerPos)
+void EnemyManager::Update(const float dT, const float scrollSpeed, const Vec2& playerPos)
 {
-	ParallaxElement::Update(normalizedPosX);
+	ParallaxElement::Update(playerPos);
 
 	for ( auto it = _Enemies.begin(); it != _Enemies.end(); )
 	{

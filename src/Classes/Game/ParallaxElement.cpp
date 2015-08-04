@@ -1,10 +1,15 @@
 #include "ParallaxElement.h"
 
-void ParallaxElement::Update(const float normalizedPosX)
+void ParallaxElement::Update(const Vec2& playerPos)
 {
-	auto leftBound = getLeftBound();
-	auto rightBound = getRightBound();
-	auto xPos = MathUtil::lerp(leftBound, rightBound, normalizedPosX);
+	float elemWidth = GetParallaxWidth();
+	float winWidth = Director::getInstance()->getWinSize().width;
+	
+	float leftBound = winWidth - elemWidth/2.0f;
+	float rightBound = 0 + elemWidth/2.0f;
+	float normalizedPlayerPos = playerPos.x / winWidth;
+
+	float xPos = MathUtil::lerp(rightBound, leftBound, normalizedPlayerPos);
 
 	setPosition( xPos, getPosition().y );
 }

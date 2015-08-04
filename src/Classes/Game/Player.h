@@ -5,7 +5,7 @@
 
 USING_NS_CC;
 
-const int SHIP_SPEED = 1400;
+const int SHIP_SPEED = 800;
 
 class Player: public Node
 {
@@ -14,7 +14,6 @@ public:
 	~Player();
 	
 	void Update(float dT);
-	float getNormalizedPosX() const;
 
 private:
 	Sprite* _Sprite;
