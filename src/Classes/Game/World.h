@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Player.h"
 #include "Background.h"
+#include "Enemy\/EnemyManager.h"
 
 USING_NS_CC;
 
@@ -18,6 +19,7 @@ public:
 private:
 	Player* _Player;
 	Background* _Background;
+	EnemyManager* _EnemyManager;
 
 	static const float _SCROLL_SPEED;
 };

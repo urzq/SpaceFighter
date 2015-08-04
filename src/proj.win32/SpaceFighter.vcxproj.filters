@@ -16,6 +16,9 @@
     <Filter Include="src\MainMenu">
       <UniqueIdentifier>{1de59474-838f-4f07-961c-e7c94eb19849}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Enemy">
+      <UniqueIdentifier>{0aeff75b-495c-4ad8-a47a-dda2be705898}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,6 +45,15 @@
     <ClCompile Include="..\Classes\Game\ParallaxElement.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\Enemy\BaseEnemy.cpp">
+      <Filter>src\Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Enemy\EnemyManager.cpp">
+      <Filter>src\Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Enemy\SimpleEnemy.cpp">
+      <Filter>src\Game\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -67,6 +79,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\ParallaxElement.h">
       <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Enemy\EnemyManager.h">
+      <Filter>src\Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Enemy\BaseEnemy.h">
+      <Filter>src\Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Enemy\SimpleEnemy.h">
+      <Filter>src\Game\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
