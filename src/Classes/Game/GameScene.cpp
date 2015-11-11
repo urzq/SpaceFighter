@@ -20,14 +20,13 @@ Scene* GameScene::createScene()
 // on "init" you need to initialize your instance
 bool GameSceneLayer::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !Layer::init() )
     {
         return false;
     }
     
-	_World = new World();
+	World::Init();
+	_World = &World::GetInstance();
 	this->addChild(_World);
     
 	 schedule( CC_SCHEDULE_SELECTOR(GameSceneLayer::Update) );
@@ -44,7 +43,7 @@ void GameSceneLayer::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
 
-	delete _World;
+	World::Shutdown();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif

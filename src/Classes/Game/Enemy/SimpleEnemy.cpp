@@ -10,6 +10,7 @@ SimpleEnemy::SimpleEnemy(const Vec2& startPos): BaseEnemy(startPos)
 
 SimpleEnemy::~SimpleEnemy()
 {
+	this->removeAllChildren();
 }
 	
 void SimpleEnemy::Update(const float dT, const Vec2& playerPos)

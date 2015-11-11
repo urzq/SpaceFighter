@@ -1,27 +1,39 @@
 #ifndef __WORLD_H__
-#define __WORLD__
+#define __WORLD_H__
 
 #include "cocos2d.h"
-#include "Player.h"
-#include "Background.h"
-#include "Enemy\/EnemyManager.h"
+
 
 USING_NS_CC;
 
+class Player;
+class Background;
+class EnemyManager;
+class ProjectileManager;
+
 class World: public Node
 {
-public:
+private:
 	World();
 	~World();
-	
-	void Update(float dT);
 
+public:
+	static void			Init();
+	static void			Shutdown();
+	static World&		GetInstance();
+
+	void				Update(float dT);
+
+	ProjectileManager&	GetProjectileManager() const;
+		
 private:
-	Player* _Player;
-	Background* _Background;
-	EnemyManager* _EnemyManager;
+	Player*				_Player;
+	Background*			_Background;
+	EnemyManager*		_EnemyManager;
+	ProjectileManager*	_ProjectileManager;
 
-	static const float _SCROLL_SPEED;
+	static World*		_WorldInstance;
+	static const float	_SCROLL_SPEED;
 };
 
 #endif

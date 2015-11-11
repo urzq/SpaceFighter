@@ -25,7 +25,7 @@ Background::~Background()
 {
 }
 
-const float Background::GetParallaxWidth() const
+float Background::GetParallaxWidth() const
 {
 	return _TopSprite->getContentSize().width;
 }

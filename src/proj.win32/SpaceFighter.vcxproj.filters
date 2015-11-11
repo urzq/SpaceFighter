@@ -19,6 +19,12 @@
     <Filter Include="src\Game\Enemy">
       <UniqueIdentifier>{0aeff75b-495c-4ad8-a47a-dda2be705898}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Projectile">
+      <UniqueIdentifier>{178af5b1-237a-4873-b61d-413f8fc112f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{ddfe6986-6fc7-4493-a553-3ca8eb440c92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +60,12 @@
     <ClCompile Include="..\Classes\Game\Enemy\SimpleEnemy.cpp">
       <Filter>src\Game\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\Projectile\Projectile.cpp">
+      <Filter>src\Game\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Projectile\ProjectileManager.cpp">
+      <Filter>src\Game\Projectile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -88,6 +100,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Enemy\SimpleEnemy.h">
       <Filter>src\Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Projectile\Projectile.h">
+      <Filter>src\Game\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Projectile\ProjectileManager.h">
+      <Filter>src\Game\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\Utils.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Core\MemoryPool.h">
+      <Filter>src\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

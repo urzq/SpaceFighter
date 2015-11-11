@@ -20,7 +20,7 @@ EnemyManager::~EnemyManager()
 {
 }
 
-const float EnemyManager::GetParallaxWidth() const
+float EnemyManager::GetParallaxWidth() const
 {
 	return Director::getInstance()->getWinSize().width * 1.2;
 }

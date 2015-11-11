@@ -16,8 +16,15 @@ public:
 	void Update(float dT);
 
 private:
+	void _UpdatePosition(float dT);
+	void _UpdateProjectile(float dT);
+
+private:
 	Sprite* _Sprite;
 	Vec2 _Destination;
+	float _Clock;
+
+	static const float _SHOOT_FREQUENCY;
 
 	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
     void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);

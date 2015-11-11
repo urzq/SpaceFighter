@@ -1,9 +1,14 @@
 #include "Player.h"
+#include "World.h"
+#include "Projectile\ProjectileManager.h"
 #include <algorithm>
 
-//USING_NS_CC;
+USING_NS_CC;
 
-Player::Player()
+const float Player::_SHOOT_FREQUENCY = 4.0f;
+
+Player::Player():
+	_Clock(0.0f)
 {
 	_Sprite = Sprite::create("Images/playerShip2_blue.png");
 	this->addChild(_Sprite);
@@ -26,26 +31,32 @@ Player::~Player()
 	this->removeAllChildren();
 }
 		
-bool Player::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
+bool Player::onTouchBegan(Touch* touch, Event* event)
 {
 	 _Destination = touch->getLocation();
 	 return true;
 }
 
-void Player::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
+void Player::onTouchMoved(Touch* touch, Event* event)
 {
 	_Destination = touch->getLocation();
 }
 
-void Player::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
+void Player::onTouchEnded(Touch* touch, Event* event)
 {
 	_Destination = this->getPosition();
 }
 
 void Player::Update(float dT)
 {
+	_UpdatePosition(dT);	
+	_UpdateProjectile(dT);
+}
+
+void Player::_UpdatePosition(float dT)
+{
 	// Moves the ship
-	auto pos = this->getPosition();
+	auto pos = getPosition();
 	auto dir = _Destination - pos;
 	auto len = dir.length();
 	dir.normalize();
@@ -57,5 +68,21 @@ void Player::Update(float dT)
 	auto halfShip = _Sprite->getContentSize() / 2;
 	pos = pos.getClampPoint( halfShip, Director::getInstance()->getWinSize()-halfShip);
 
-	this->setPosition(pos);
+	setPosition(pos);
+}
+
+void Player::_UpdateProjectile(float dT)
+{
+	_Clock += dT;
+	auto shootPeriod = 1.f / _SHOOT_FREQUENCY;
+
+	if ( _Clock > shootPeriod )
+	{
+		_Clock -= shootPeriod;
+		auto& projMgr = World::GetInstance().GetProjectileManager();
+
+		Vec2 pos = getPosition() + Vec2(0.0f, 30.0f);
+		projMgr.CreateProjectile(ProjectileType::BASIC_PLAYER, pos);
+
+	}
 }

@@ -147,12 +147,16 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClCompile Include="..\Classes\Game\GameScene.cpp" />
     <ClCompile Include="..\Classes\Game\ParallaxElement.cpp" />
     <ClCompile Include="..\Classes\Game\Player.cpp" />
+    <ClCompile Include="..\Classes\Game\Projectile\Projectile.cpp" />
+    <ClCompile Include="..\Classes\Game\Projectile\ProjectileManager.cpp" />
     <ClCompile Include="..\Classes\Game\World.cpp" />
     <ClCompile Include="..\Classes\MainMenu\MainScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Core\MemoryPool.h" />
+    <ClInclude Include="..\Classes\Core\Utils.h" />
     <ClInclude Include="..\Classes\Game\Background.h" />
     <ClInclude Include="..\Classes\Game\Enemy\BaseEnemy.h" />
     <ClInclude Include="..\Classes\Game\Enemy\EnemyManager.h" />
@@ -160,6 +164,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClInclude Include="..\Classes\Game\GameScene.h" />
     <ClInclude Include="..\Classes\Game\ParallaxElement.h" />
     <ClInclude Include="..\Classes\Game\Player.h" />
+    <ClInclude Include="..\Classes\Game\Projectile\Projectile.h" />
+    <ClInclude Include="..\Classes\Game\Projectile\ProjectileManager.h" />
     <ClInclude Include="..\Classes\Game\World.h" />
     <ClInclude Include="..\Classes\MainMenu\MainScene.h" />
     <ClInclude Include="main.h" />

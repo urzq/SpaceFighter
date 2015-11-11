@@ -9,10 +9,7 @@ USING_NS_CC;
 class ParallaxElement: public Node
 {
 public:
-	//virtual const float getLeftBound() const = 0;
-	//virtual const float getRightBound() const = 0;
-	
-	virtual const float GetParallaxWidth() const = 0;
+	virtual float GetParallaxWidth() const = 0;
 	
 	void Update(const Vec2& playerPos);
 };

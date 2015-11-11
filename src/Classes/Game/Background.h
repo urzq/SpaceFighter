@@ -15,7 +15,7 @@ public:
 	// param scrollSpeed: pixel/sec
 	void Background::Update(const float dT, const float scrollSpeed, const Vec2& playerPos);
 
-	virtual const float GetParallaxWidth() const override;
+	virtual float GetParallaxWidth() const override;
 
 private:
 	Sprite* _TopSprite;
