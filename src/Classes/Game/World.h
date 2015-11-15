@@ -25,7 +25,11 @@ public:
 	void				Update(float dT);
 
 	ProjectileManager&	GetProjectileManager() const;
-		
+	bool				OnContactBegin(PhysicsContact& contact);
+
+private:
+	void				ProjectileCollideEnemy(Node* nodeProjectile, Node* nodeEnemy);
+
 private:
 	Player*				_Player;
 	Background*			_Background;

@@ -5,8 +5,10 @@ USING_NS_CC;
 Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
-    
+	auto scene = Scene::createWithPhysics();
+	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
+
     // 'layer' is an autorelease object
     auto layer = GameSceneLayer::create();
 
@@ -20,18 +22,25 @@ Scene* GameScene::createScene()
 // on "init" you need to initialize your instance
 bool GameSceneLayer::init()
 {
-    if ( !Layer::init() )
-    {
-        return false;
-    }
-    
-	World::Init();
-	_World = &World::GetInstance();
-	this->addChild(_World);
-    
-	 schedule( CC_SCHEDULE_SELECTOR(GameSceneLayer::Update) );
+	if (Layer::init())
+	{
+		World::Init();
+		_World = &World::GetInstance();
+		this->addChild(_World);
 
-    return true;
+		schedule(CC_SCHEDULE_SELECTOR(GameSceneLayer::Update));
+
+		auto contactListener = EventListenerPhysicsContact::create();
+
+		contactListener->onContactBegin = CC_CALLBACK_1(World::OnContactBegin, _World);
+		_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void GameSceneLayer::Update(float dT)

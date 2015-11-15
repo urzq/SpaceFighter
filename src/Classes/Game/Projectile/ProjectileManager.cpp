@@ -19,7 +19,7 @@ void ProjectileManager::CreateProjectile(ProjectileType projectileType, Vec2 pos
 	switch (projectileType)
 	{
 	case ProjectileType::BASIC_PLAYER:
-		proj = m_ProjectilePool.Create("Images/laserBlue02.png", Vec2::UNIT_Y);
+		proj = m_ProjectilePool.Create("Images/laserBlue02.png", Vec2::UNIT_Y, 20.0f);
 		break;
 	}
 

@@ -2,10 +2,11 @@
 #include "math/MathUtil.h"
 #include <algorithm>
 
-SimpleEnemy::SimpleEnemy(const Vec2& startPos): BaseEnemy(startPos)
+SimpleEnemy::SimpleEnemy(const Vec2& startPos) : 
+	BaseEnemy(startPos, Size(60, 40), 4)
 {
-	_Sprite = Sprite::create("Images/enemyRed1.png");
-	this->addChild(_Sprite);
+	m_Sprite = Sprite::create("Images/enemyRed1.png");
+	this->addChild(m_Sprite);
 }
 
 SimpleEnemy::~SimpleEnemy()
@@ -20,5 +21,5 @@ void SimpleEnemy::Update(const float dT, const Vec2& playerPos)
 
 bool SimpleEnemy::ShouldBeDestroyed()
 {
-	return getPosition().y < 0;
+	return m_ToDestroy || getPosition().y < 0;
 }

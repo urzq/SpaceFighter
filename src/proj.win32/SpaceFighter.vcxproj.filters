@@ -66,6 +66,9 @@
     <ClCompile Include="..\Classes\Game\Projectile\ProjectileManager.cpp">
       <Filter>src\Game\Projectile</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameObjectConst.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Core\MemoryPool.h">
       <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameObjectConst.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
