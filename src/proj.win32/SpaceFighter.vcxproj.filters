@@ -119,6 +119,9 @@
     <ClInclude Include="..\Classes\Game\GameObjectConst.h">
       <Filter>src\Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Core\FSM.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
