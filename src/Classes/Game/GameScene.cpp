@@ -1,6 +1,7 @@
 #include "GameScene.h"
 
-USING_NS_CC;
+using namespace cocos2d;
+using namespace SpaceFighter;
 
 Scene* GameScene::createScene()
 {

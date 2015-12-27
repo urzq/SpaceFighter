@@ -6,6 +6,8 @@
 
 #include "SimpleEnemy.h"
 
+using namespace SpaceFighter;
+
 EnemyManager::EnemyManager()
 {
 	_Enemies.reserve(64);

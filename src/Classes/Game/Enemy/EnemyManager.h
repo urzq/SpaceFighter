@@ -7,23 +7,26 @@
 #include "../ParallaxElement.h"
 #include "BaseEnemy.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
-class EnemyManager: public ParallaxElement
+namespace SpaceFighter
 {
-public:
-	EnemyManager();
-	~EnemyManager();
-	
-	// param scrollSpeed: pixel/sec
-	void Update(const float dT, const float scrollSpeed, const Vec2& playerPos);
 
-	float GetParallaxWidth() const override;
+	class EnemyManager : public ParallaxElement
+	{
+	public:
+		EnemyManager();
+		~EnemyManager();
 
-	BaseEnemy* CreateEnemy( const std::string& ennemyType, const Vec2& startPos);
+		// param scrollSpeed: pixel/sec
+		void Update(const float dT, const float scrollSpeed, const Vec2& playerPos);
 
-private:
-	std::vector<BaseEnemy*> _Enemies;
-};
+		float GetParallaxWidth() const override;
 
+		BaseEnemy* CreateEnemy(const std::string& ennemyType, const Vec2& startPos);
+
+	private:
+		std::vector<BaseEnemy*> _Enemies;
+	};
+}
 #endif

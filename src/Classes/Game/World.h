@@ -3,41 +3,42 @@
 
 #include "cocos2d.h"
 
+using namespace cocos2d;
 
-USING_NS_CC;
-
-class Player;
-class Background;
-class EnemyManager;
-class ProjectileManager;
-
-class World: public Node
+namespace SpaceFighter
 {
-private:
-	World();
-	~World();
+	class Player;
+	class Background;
+	class EnemyManager;
+	class ProjectileManager;
 
-public:
-	static void			Init();
-	static void			Shutdown();
-	static World&		GetInstance();
+	class World : public Node
+	{
+	private:
+		World();
+		~World();
 
-	void				Update(float dT);
+	public:
+		static void			Init();
+		static void			Shutdown();
+		static World&		GetInstance();
 
-	ProjectileManager&	GetProjectileManager() const;
-	bool				OnContactBegin(PhysicsContact& contact);
+		void				Update(float dT);
 
-private:
-	void				ProjectileCollideEnemy(Node* nodeProjectile, Node* nodeEnemy);
+		ProjectileManager&	GetProjectileManager() const;
+		bool				OnContactBegin(PhysicsContact& contact);
 
-private:
-	Player*				_Player;
-	Background*			_Background;
-	EnemyManager*		_EnemyManager;
-	ProjectileManager*	_ProjectileManager;
+	private:
+		void				ProjectileCollideEnemy(Node* nodeProjectile, Node* nodeEnemy);
 
-	static World*		_WorldInstance;
-	static const float	_SCROLL_SPEED;
-};
+	private:
+		Player*				_Player;
+		Background*			_Background;
+		EnemyManager*		_EnemyManager;
+		ProjectileManager*	_ProjectileManager;
 
+		static World*		_WorldInstance;
+		static const float	_SCROLL_SPEED;
+	};
+}
 #endif

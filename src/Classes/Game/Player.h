@@ -3,32 +3,34 @@
 
 #include "cocos2d.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
 const int SHIP_SPEED = 800;
 
-class Player: public Node
+namespace SpaceFighter
 {
-public:
-	Player();
-	~Player();
-	
-	void Update(float dT);
+	class Player : public Node
+	{
+	public:
+		Player();
+		~Player();
 
-private:
-	void _UpdatePosition(float dT);
-	void _UpdateProjectile(float dT);
+		void Update(float dT);
 
-private:
-	Sprite* _Sprite;
-	Vec2 _Destination;
-	float _Clock;
+	private:
+		void _UpdatePosition(float dT);
+		void _UpdateProjectile(float dT);
 
-	static const float _SHOOT_FREQUENCY;
+	private:
+		Sprite* _Sprite;
+		Vec2 _Destination;
+		float _Clock;
 
-	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
-};
+		static const float _SHOOT_FREQUENCY;
 
+		bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
+		void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
+		void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
+	};
+}
 #endif

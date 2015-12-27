@@ -1,5 +1,7 @@
 #include "ParallaxElement.h"
 
+using namespace SpaceFighter;
+
 void ParallaxElement::Update(const Vec2& playerPos)
 {
 	float elemWidth = GetParallaxWidth();

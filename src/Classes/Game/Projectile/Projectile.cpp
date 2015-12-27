@@ -1,6 +1,8 @@
 #include "Projectile.h"
 #include "Game/GameObjectConst.h"
 
+using namespace SpaceFighter;
+
 Projectile::Projectile(std::string spriteName, Vec2 direction, float speed):
 	m_Direction(direction), 
 	m_ToDestroy(false),
@@ -18,12 +20,11 @@ Projectile::Projectile(std::string spriteName, Vec2 direction, float speed):
 	body->setContactTestBitmask(0x00000001);
 
 	this->setPhysicsBody(body);
-	this->setTag((int)GameObjectConst::Tags::PROJECTILE);
+	this->setTag((int)SpaceFighter::Tags::PROJECTILE);
 }
 
 Projectile::~Projectile()
 {
-	
 }
 
 void Projectile::Update(float dT)

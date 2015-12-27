@@ -9,6 +9,8 @@
 #include "Core/Utils.h"
 #include <assert.h>
 
+using namespace SpaceFighter;
+
 const float World::_SCROLL_SPEED = 250;
 
 World* World::_WorldInstance = nullptr;
@@ -74,8 +76,6 @@ void World::ProjectileCollideEnemy(Node* nodeProjectile, Node* nodeEnemy)
 
 bool World::OnContactBegin(PhysicsContact& contact)
 {
-	using namespace GameObjectConst;
-
 	auto nodeA = contact.getShapeA()->getBody()->getNode();
 	auto nodeB = contact.getShapeB()->getBody()->getNode();
 

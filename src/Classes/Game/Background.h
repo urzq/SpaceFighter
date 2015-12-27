@@ -4,24 +4,27 @@
 #include "cocos2d.h"
 #include "ParallaxElement.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
-class Background: public ParallaxElement
+namespace SpaceFighter
 {
-public:
-	Background();
-	~Background();
-	
-	// param scrollSpeed: pixel/sec
-	void Background::Update(const float dT, const float scrollSpeed, const Vec2& playerPos);
+	class Background : public ParallaxElement
+	{
+	public:
+		Background();
+		~Background();
 
-	virtual float GetParallaxWidth() const override;
+		// param scrollSpeed: pixel/sec
+		void Background::Update(const float dT, const float scrollSpeed, const Vec2& playerPos);
 
-private:
-	Sprite* _TopSprite;
-	Sprite* _BotSprite;
+		virtual float GetParallaxWidth() const override;
 
-	Sprite* _CreateSprite(const Vec2& spritePos);
-};
+	private:
+		Sprite* _TopSprite;
+		Sprite* _BotSprite;
+
+		Sprite* _CreateSprite(const Vec2& spritePos);
+	};
+}
 
 #endif

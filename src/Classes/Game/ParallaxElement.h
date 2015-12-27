@@ -3,15 +3,18 @@
 
 #include "cocos2d.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
-//moves the node on the x axis, depending on where the player's ship is.
-class ParallaxElement: public Node
+namespace SpaceFighter
 {
-public:
-	virtual float GetParallaxWidth() const = 0;
-	
-	void Update(const Vec2& playerPos);
-};
+	//moves the node on the x axis, depending on where the player's ship is.
+	class ParallaxElement : public Node
+	{
+	public:
+		virtual float GetParallaxWidth() const = 0;
+
+		void Update(const Vec2& playerPos);
+	};
+}
 
 #endif

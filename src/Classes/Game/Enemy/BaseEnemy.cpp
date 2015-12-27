@@ -1,6 +1,8 @@
 #include "BaseEnemy.h"
 #include "Game/GameObjectConst.h"
 
+using namespace SpaceFighter;
+
 BaseEnemy::BaseEnemy(const Vec2& startPos, const Size& size, int hp):
 	m_Hp(hp), 
 	m_ToDestroy(false)
@@ -14,7 +16,7 @@ BaseEnemy::BaseEnemy(const Vec2& startPos, const Size& size, int hp):
 	body->setContactTestBitmask(0x00000002);
 
 	this->setPhysicsBody(body);
-	this->setTag( (int)GameObjectConst::Tags::ENEMY);
+	this->setTag((int)SpaceFighter::Tags::ENEMY);
 }
 
 BaseEnemy::~BaseEnemy()

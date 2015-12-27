@@ -3,6 +3,8 @@
 #include "Core/MemoryPool.h"
 #include "Core/Utils.h"
 
+using namespace SpaceFighter;
+
 ProjectileManager::ProjectileManager():
 	m_ProjectilePool(64)
 {

@@ -6,29 +6,31 @@
 #include "Game/ParallaxElement.h"
 #include <vector>
 
-USING_NS_CC;
+using namespace cocos2d;
 
-class Projectile;
-
-enum class ProjectileType
+namespace SpaceFighter
 {
-	BASIC_PLAYER = 0,
-};
+	class Projectile;
 
-class ProjectileManager : public ParallaxElement
-{
-public:
-	ProjectileManager();
-	~ProjectileManager();
-	
-	void Update(float dT, const Vec2& playerPos);
-	void CreateProjectile(ProjectileType projectileType, Vec2 position);
+	enum class ProjectileType
+	{
+		BASIC_PLAYER = 0,
+	};
 
-	float GetParallaxWidth() const override;
+	class ProjectileManager : public ParallaxElement
+	{
+	public:
+		ProjectileManager();
+		~ProjectileManager();
 
-private:
-	MemoryPool<Projectile> m_ProjectilePool;
-	std::vector<Projectile*> m_Projectiles; //is it the right data structure ? we are inserting and removing a lot, so maybe a list is better.
-};
+		void Update(float dT, const Vec2& playerPos);
+		void CreateProjectile(ProjectileType projectileType, Vec2 position);
 
+		float GetParallaxWidth() const override;
+
+	private:
+		Core::MemoryPool<Projectile> m_ProjectilePool;
+		std::vector<Projectile*> m_Projectiles; //is it the right data structure ? we are inserting and removing a lot, so maybe a list is better.
+	};
+}
 #endif //__PROJECTILE_MANAGER_H__

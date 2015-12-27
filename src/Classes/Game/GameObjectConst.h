@@ -3,9 +3,9 @@
 
 #include "cocos2d.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
-namespace GameObjectConst
+namespace SpaceFighter
 {
 	enum class Tags
 	{

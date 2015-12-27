@@ -2,6 +2,8 @@
 #include "math/MathUtil.h"
 #include <algorithm>
 
+using namespace SpaceFighter;
+
 Sprite* Background::_CreateSprite(const Vec2& spritePos)
 {
 	auto sprite = Sprite::create("Images/Background.png");

@@ -3,7 +3,8 @@
 #include "Projectile\ProjectileManager.h"
 #include <algorithm>
 
-USING_NS_CC;
+using namespace cocos2d;
+using namespace SpaceFighter;
 
 const float Player::_SHOOT_FREQUENCY = 4.0f;
 

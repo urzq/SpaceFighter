@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 #include "CCTerrain.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 #include <stdlib.h>
 #include <CCImage.h>
 #include "renderer/CCGLProgram.h"

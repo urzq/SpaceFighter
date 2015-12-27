@@ -5,22 +5,15 @@
 
 #include"cocostudio/CocoStudio.h" 
 
-USING_NS_CC;
+using namespace SpaceFighter;
 using namespace cocos2d;
-
 
 Scene* MainScene::createScene()
 {
-    // 'scene' is an autorelease object
     auto scene = Scene::create();
-    
-    // 'layer' is an autorelease object
     auto layer = MainSceneLayer::create();
-
-    // add layer as a child to scene
     scene->addChild(layer);
 
-    // return the scene
     return scene;
 }
 

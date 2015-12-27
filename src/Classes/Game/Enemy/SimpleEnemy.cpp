@@ -2,6 +2,8 @@
 #include "math/MathUtil.h"
 #include <algorithm>
 
+using namespace SpaceFighter;
+
 SimpleEnemy::SimpleEnemy(const Vec2& startPos) : 
 	BaseEnemy(startPos, Size(60, 40), 4)
 {
