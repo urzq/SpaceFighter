@@ -16,53 +16,56 @@ state(\
 	[this](){this->On##state##Exit();}\
 )
 
-class State
+namespace Core
 {
-public:
-	
-	State(std::function<void(void)> enter, std::function<void(float)> update, std::function<void(void)> exit):
-		m_Enter(enter),
-		m_Update(update),
-		m_Exit(exit)
-	{
-	}
 
-	std::function<void(void)> m_Enter;
-	std::function<void(float)> m_Update;
-	std::function<void(void)> m_Exit;
-};
-
-class FSM
-{
-public:
-	FSM() : m_CurrentState(nullptr)
+	class State
 	{
-	}
+	public:
 
-	void ChangeState(State &state)
-	{
-		if (m_CurrentState)
+		State(std::function<void(void)> enter, std::function<void(float)> update, std::function<void(void)> exit) :
+			m_Enter(enter),
+			m_Update(update),
+			m_Exit(exit)
 		{
-			m_CurrentState->m_Exit();
 		}
 
-		m_CurrentState = &state;
+		std::function<void(void)> m_Enter;
+		std::function<void(float)> m_Update;
+		std::function<void(void)> m_Exit;
+	};
 
-		m_CurrentState->m_Enter();
-	}
-
-	void Update(float delta)
+	class FSM
 	{
-		if (m_CurrentState)
+	public:
+		FSM() : m_CurrentState(nullptr)
 		{
-			m_CurrentState->m_Update(delta);
 		}
-	}
 
-private:
-	State* m_CurrentState;
+		void ChangeState(State &state)
+		{
+			if (m_CurrentState)
+			{
+				m_CurrentState->m_Exit();
+			}
 
-};
+			m_CurrentState = &state;
 
+			m_CurrentState->m_Enter();
+		}
+
+		void Update(float delta)
+		{
+			if (m_CurrentState)
+			{
+				m_CurrentState->m_Update(delta);
+			}
+		}
+
+	private:
+		State* m_CurrentState;
+
+	};
+}
 #endif
 

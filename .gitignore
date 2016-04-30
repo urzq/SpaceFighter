@@ -34,5 +34,7 @@
 *.exp
 *.opensdf
 *.pdb
+*.suo
+*.log
 
 /src/proj.win32/Debug.win32/
