@@ -48,6 +48,16 @@ void Player::onTouchEnded(Touch* touch, Event* event)
 	_Destination = this->getPosition();
 }
 
+void Player::StartIntroAnimation(const float introTime)
+{
+	auto screenSize = Director::getInstance()->getWinSize();
+	setPosition( Vec2(screenSize.width / 2, -50) );
+
+	Vec2 destination(screenSize.width / 2, 200);
+	runAction( EaseCubicActionOut::create( CCMoveTo::create(introTime, destination)));
+	_Destination = destination;
+}
+
 void Player::Update(float dT)
 {
 	_UpdatePosition(dT);	

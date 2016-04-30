@@ -149,6 +149,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Game\Enemy\BaseEnemy.cpp" />
     <ClCompile Include="..\Classes\Game\Enemy\EnemyManager.cpp" />
     <ClCompile Include="..\Classes\Game\Enemy\SimpleEnemy.cpp" />
+    <ClCompile Include="..\Classes\Game\GameFSM.cpp" />
     <ClCompile Include="..\Classes\Game\GameObjectConst.cpp" />
     <ClCompile Include="..\Classes\Game\GameScene.cpp" />
     <ClCompile Include="..\Classes\Game\ParallaxElement.cpp" />
@@ -168,6 +169,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Game\Enemy\BaseEnemy.h" />
     <ClInclude Include="..\Classes\Game\Enemy\EnemyManager.h" />
     <ClInclude Include="..\Classes\Game\Enemy\SimpleEnemy.h" />
+    <ClInclude Include="..\Classes\Game\GameFSM.h" />
     <ClInclude Include="..\Classes\Game\GameObjectConst.h" />
     <ClInclude Include="..\Classes\Game\GameScene.h" />
     <ClInclude Include="..\Classes\Game\ParallaxElement.h" />

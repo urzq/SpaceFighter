@@ -15,6 +15,7 @@ namespace SpaceFighter
 		Player();
 		~Player();
 
+		void StartIntroAnimation(const float introTime);
 		void Update(float dT);
 
 	private:

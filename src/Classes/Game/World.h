@@ -2,6 +2,7 @@
 #define __WORLD_H__
 
 #include "cocos2d.h"
+#include <memory.h>
 
 using namespace cocos2d;
 
@@ -23,22 +24,26 @@ namespace SpaceFighter
 		static void			Shutdown();
 		static World&		GetInstance();
 
-		void				Update(float dT);
-
+		Player&				GetPlayer() const;
+		Background&			GetBackground() const;
+		EnemyManager&		GetEnemyManager() const;
 		ProjectileManager&	GetProjectileManager() const;
+
 		bool				OnContactBegin(PhysicsContact& contact);
+	
+	public:
+		static const float	SCROLL_SPEED;
 
 	private:
 		void				ProjectileCollideEnemy(Node* nodeProjectile, Node* nodeEnemy);
 
 	private:
-		Player*				_Player;
-		Background*			_Background;
-		EnemyManager*		_EnemyManager;
-		ProjectileManager*	_ProjectileManager;
+		std::unique_ptr<Player>				m_Player;
+		std::unique_ptr<Background>			m_Background;
+		std::unique_ptr<EnemyManager>		m_EnemyManager;
+		std::unique_ptr<ProjectileManager>	m_ProjectileManager;
 
 		static World*		_WorldInstance;
-		static const float	_SCROLL_SPEED;
 	};
 }
 #endif

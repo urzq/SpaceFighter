@@ -13,9 +13,9 @@ EnemyManager::EnemyManager()
 	_Enemies.reserve(64);
 
 	//Test -> this should come from a file
-	CreateEnemy( "SimpleEnemy", Vec2(-200, 900));
-	CreateEnemy( "SimpleEnemy", Vec2(0, 1000));
-	CreateEnemy( "SimpleEnemy", Vec2(200, 1100));
+	CreateEnemy( "SimpleEnemy", Vec2(-200, 1000));
+	CreateEnemy( "SimpleEnemy", Vec2(0, 1100));
+	CreateEnemy( "SimpleEnemy", Vec2(200, 1200));
 }
 
 EnemyManager::~EnemyManager()
