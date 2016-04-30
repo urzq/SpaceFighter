@@ -33,8 +33,9 @@ THE SOFTWARE.
 #include "2d/CCDrawNode.h"
 #include "base/CCProtocols.h"
 #include "renderer/CCTextureAtlas.h"
-#include "renderer/CCQuadCommand.h"
+#include "renderer/CCTrianglesCommand.h"
 #include "renderer/CCCustomCommand.h"
+#include "2d/CCAutoPolygon.h"
 
 NS_CC_BEGIN
 
@@ -45,6 +46,16 @@ class Rect;
 class Size;
 class Texture2D;
 struct transformValues_;
+
+#ifdef SPRITE_RENDER_IN_SUBPIXEL
+#undef SPRITE_RENDER_IN_SUBPIXEL
+#endif
+
+#if CC_SPRITEBATCHNODE_RENDER_SUBPIXEL
+#define SPRITE_RENDER_IN_SUBPIXEL
+#else
+#define SPRITE_RENDER_IN_SUBPIXEL(__ARGS__) (ceil(__ARGS__))
+#endif
 
 /**
  * @addtogroup _2d
@@ -98,6 +109,17 @@ public:
      * @return  An autoreleased sprite object.
      */
     static Sprite* create(const std::string& filename);
+    
+    /**
+     * Creates a polygon sprite with a polygon info.
+     *
+     * After creation, the rect of sprite will be the size of the image,
+     * and the offset will be (0,0).
+     *
+     * @param   polygonInfo A path to image file, e.g., "scene1/monster.png".
+     * @return  An autoreleased sprite object.
+     */
+    static Sprite* create(const PolygonInfo& info);
 
     /**
      * Creates a sprite with an image filename and a rect.
@@ -381,6 +403,19 @@ public:
      */
     CC_DEPRECATED_ATTRIBUTE void setFlipY(bool flippedY) { setFlippedY(flippedY); };
 
+    /**
+     * returns a reference of the polygon information associated with this sprite
+     *
+     * @return a copy of PolygonInfo
+     */
+    PolygonInfo& getPolygonInfo();
+
+    /**
+     * set the sprite to use this new PolygonInfo
+     *
+     * @param PolygonInfo the polygon information object
+     */
+    void setPolygonInfo(const PolygonInfo& info);
     //
     // Overrides
     //
@@ -439,7 +474,10 @@ public:
     virtual bool isOpacityModifyRGB() const override;
     /// @}
 
-CC_CONSTRUCTOR_ACCESS:
+    const int getResourceType() const { return _fileType; }
+    const std::string getResourceName() const { return _fileName; }
+
+CC_CONSTRUCTOR_ACCESS :
 	/**
      * @js ctor
      */
@@ -459,13 +497,24 @@ CC_CONSTRUCTOR_ACCESS:
      * @return  True if the sprite is initialized properly, false otherwise.
      */
     virtual bool initWithTexture(Texture2D *texture);
+    
+    
+    /**
+     * Initializes a sprite with a PolygonInfo.
+     *
+     * After initialization, the rect used will be the size of the texture, and the offset will be (0,0).
+     *
+     * @param   PolygonInfo    a Polygon info contains the structure of the polygon.
+     * @return  True if the sprite is initialized properly, false otherwise.
+     */
+    virtual bool initWithPolygon(const PolygonInfo& info);
 
     /**
      * Initializes a sprite with a texture and a rect.
      *
      * After initialization, the offset will be (0,0).
      *
-     * @param   texture    A pointer to an exisiting Texture2D object.
+     * @param   texture    A pointer to an existing Texture2D object.
      *                      You can use a Texture2D object for many sprites.
      * @param   rect        Only the contents inside rect of this texture will be applied for this sprite.
      * @return  True if the sprite is initialized properly, false otherwise.
@@ -499,7 +548,7 @@ CC_CONSTRUCTOR_ACCESS:
      * A SpriteFrame will be fetched from the SpriteFrameCache by name.
      * If the SpriteFrame doesn't exist it will raise an exception.
      *
-     * @param   spriteFrameName  A key string that can fected a volid SpriteFrame from SpriteFrameCache.
+     * @param   spriteFrameName  A key string that can fected a valid SpriteFrame from SpriteFrameCache.
      * @return  True if the sprite is initialized properly, false otherwise.
      */
     virtual bool initWithSpriteFrameName(const std::string& spriteFrameName);
@@ -530,7 +579,7 @@ CC_CONSTRUCTOR_ACCESS:
      * @lua     init
      */
     virtual bool initWithFile(const std::string& filename, const Rect& rect);
-
+    
 protected:
 
     void updateColor() override;
@@ -539,6 +588,8 @@ protected:
     virtual void setReorderChildDirtyRecursively();
     virtual void setDirtyRecursively(bool value);
 
+
+    
     //
     // Data used when the sprite is rendered using a SpriteSheet
     //
@@ -557,7 +608,7 @@ protected:
     BlendFunc        _blendFunc;            /// It's required for TextureProtocol inheritance
     Texture2D*       _texture;              /// Texture2D object that is used to render the sprite
     SpriteFrame*     _spriteFrame;
-    QuadCommand      _quadCommand;          /// quad command
+    TrianglesCommand _trianglesCommand;     ///
 #if CC_SPRITE_DEBUG_DRAW
     DrawNode *_debugDrawNode;
 #endif //CC_SPRITE_DEBUG_DRAW
@@ -566,7 +617,7 @@ protected:
     //
 
     // texture
-    Rect _rect;                             /// Retangle of Texture2D
+    Rect _rect;                             /// Rectangle of Texture2D
     bool   _rectRotated;                    /// Whether the texture is rotated
 
     // Offset Position (used by Zwoptex)
@@ -575,6 +626,7 @@ protected:
 
     // vertex coords, texture coords and color info
     V3F_C4B_T2F_Quad _quad;
+    PolygonInfo  _polyInfo;
 
     // opacity and RGB protocol
     bool _opacityModifyRGB;
@@ -584,6 +636,10 @@ protected:
     bool _flippedY;                         /// Whether the sprite is flipped vertically or not
 
     bool _insideBounds;                     /// whether or not the sprite was inside bounds the previous frame
+
+    std::string _fileName;
+    int _fileType;
+
 private:
     CC_DISALLOW_COPY_AND_ASSIGN(Sprite);
 };

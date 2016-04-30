@@ -2,7 +2,7 @@
 #include "AppDelegate.h"
 #include "cocos2d.h"
 
-using namespace cocos2d;
+USING_NS_CC;
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,

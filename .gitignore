@@ -33,5 +33,6 @@
 *.sdf
 *.exp
 *.opensdf
+*.pdb
 
 /src/proj.win32/Debug.win32/
